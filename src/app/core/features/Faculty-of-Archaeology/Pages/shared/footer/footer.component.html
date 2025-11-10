@@ -1,0 +1,83 @@
+<footer class="site-footer">
+  <div class="footer-top py-5">
+    <div class="container-fluid">
+      <div class="row g-4">
+        <!-- الروابط السريعة -->
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-section">
+            <h3 class="footer-title">روابط سريعة</h3>
+            <ul class="footer-links">
+              <li *ngFor="let link of quickLinks">
+                <a [href]="link.url">{{ link.label }}</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- معلومات التواصل -->
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-section">
+            <h3 class="footer-title">تواصل معنا</h3>
+            <div class="contact-info">
+              <p class="contact-item">
+                <i class="pi pi-map-marker me-2"></i>
+                {{ contactInfo.address }}
+              </p>
+              <p class="contact-item">
+                <i class="pi pi-phone me-2"></i>
+                {{ contactInfo.phone }}
+              </p>
+              <p class="contact-item">
+                <i class="pi pi-envelope me-2"></i>
+                {{ contactInfo.email }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- روابط التواصل الاجتماعي -->
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-section">
+            <h3 class="footer-title">تابعنا</h3>
+            <div class="social-links">
+              <a *ngFor="let social of socialLinks" 
+                 [href]="social.url" 
+                 class="social-link"
+                 [attr.aria-label]="social.label">
+                <i [class]="social.icon"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- معلومات الكلية -->
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-section">
+            <h3 class="footer-title">كلية الآثار</h3>
+            <p class="footer-description">
+              نحافظ على تراث الإنسانية الأغلى ونشاركه من خلال التعليم، والابتكار، والاكتشاف لأكثر من 100 عام.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom py-3">
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <p class="copyright mb-0">
+            © {{ currentYear }} كلية الآثار. جميع الحقوق محفوظة.
+          </p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <p class="mb-0">
+            <a href="/privacy" class="footer-link me-3">سياسة الخصوصية</a>
+            <a href="/terms" class="footer-link">شروط الخدمة</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

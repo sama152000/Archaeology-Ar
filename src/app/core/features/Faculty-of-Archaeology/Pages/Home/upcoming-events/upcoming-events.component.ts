@@ -1,0 +1,23 @@
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { NewsService } from '../../../Services/news.service';
+import { Event } from '../../../model/news.model';
+
+@Component({
+  selector: 'app-upcoming-events',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './upcoming-events.component.html',
+  styleUrls: ['./upcoming-events.component.css']
+})
+export class UpcomingEventsComponent implements OnInit {
+  events: Event[] = [];
+
+  constructor(private newsService: NewsService) {}
+
+  ngOnInit(): void {
+    this.newsService.getEvents().subscribe(events => {
+      this.events = events;
+    });
+  }
+}
