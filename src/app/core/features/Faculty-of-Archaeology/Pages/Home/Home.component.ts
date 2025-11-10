@@ -25,8 +25,8 @@ import { FooterComponent } from "../shared/footer/footer.component";
     GalleryComponent,
     FunFactsComponent,
 ],
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  templateUrl: './Home.component.html',
+  styleUrls: ['./Home.component.css']
 })
 export class HomeComponent implements OnInit, AfterViewInit {
   private observer?: IntersectionObserver;
