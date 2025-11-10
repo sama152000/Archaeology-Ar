@@ -1,0 +1,80 @@
+<!-- ======= قسم الأخبار والتحديثات ======= -->
+<section class="about-section">
+  <div class="container">
+    <div class="about-layout">
+      <!-- الشريط الجانبي -->
+      <aside class="about-sidebar">
+        <h3>الأخبار والتحديثات</h3>
+        <ul>
+          <li [class.active]="isActive('news')">
+            <a [routerLink]="['/posts', 'news']">جميع الأخبار</a>
+          </li>
+          <li [class.active]="isActive('events')">
+            <a [routerLink]="['/posts', 'events']">الفعاليات</a>
+          </li>
+          <li [class.active]="isActive('announcements')">
+            <a [routerLink]="['/posts', 'announcements']">الإعلانات</a>
+          </li>
+        </ul>
+      </aside>
+
+      <!-- المحتوى الرئيسي -->
+      <div class="department-content fade-in-element" [class.visible]="isVisible">
+        <h2>{{ getTitle() }}</h2>
+        <p class="intro-text">
+          {{ getIntroText() }}
+        </p>
+
+        <div class="blog-grid">
+          <!-- الأخبار -->
+          <ng-container *ngIf="currentType === 'news'">
+            <article class="blog-card" *ngFor="let item of newsItems" (click)="navigateToDetails(item)">
+              <img [src]="item.image" [alt]="item.title" />
+              <div class="blog-info">
+                <h3><a [routerLink]="['/posts', 'news', item.id]">{{ item.title }}</a></h3>
+                <p class="blog-date">
+                  <i class="pi pi-calendar"></i> {{ item.date }}
+                </p>
+                <p class="blog-excerpt">{{ item.excerpt }}</p>
+                <a [routerLink]="['/posts', 'news', item.id]" class="read-more">اقرأ المزيد</a>
+              </div>
+            </article>
+          </ng-container>
+
+          <!-- الفعاليات -->
+          <ng-container *ngIf="currentType === 'events'">
+            <article class="blog-card" *ngFor="let item of events" (click)="navigateToDetails(item)">
+              <img [src]="item.image" [alt]="item.title" />
+              <div class="blog-info">
+                <h3><a [routerLink]="['/posts', 'events', item.id]">{{ item.title }}</a></h3>
+                <p class="blog-date">
+                  <i class="pi pi-calendar"></i> {{ item.date }} {{ item.month }}
+                </p>
+                <p class="blog-excerpt">{{ item.schedule }}</p>
+                <a [routerLink]="['/posts', 'events', item.id]" class="read-more">اقرأ المزيد</a>
+              </div>
+            </article>
+          </ng-container>
+
+          <!-- الإعلانات -->
+          <ng-container *ngIf="currentType === 'announcements'">
+            <article class="blog-card" *ngFor="let item of announcements" (click)="navigateToDetails(item)">
+              <img [src]="item.image" [alt]="item.title" />
+              <div class="blog-info">
+                <h3><a [routerLink]="['/posts', 'announcements', item.id]">{{ item.title }}</a></h3>
+                <p class="blog-date">
+                  <i class="pi pi-calendar"></i> {{ item.date }}
+                  <span *ngIf="item.priority" class="priority-badge priority-{{ item.priority }}">
+                    {{ item.priority === 'high' ? 'عاجل' : 'متوسط' }}
+                  </span>
+                </p>
+                <p class="blog-excerpt">{{ item.excerpt }}</p>
+                <a [routerLink]="['/posts', 'announcements', item.id]" class="read-more">اقرأ المزيد</a>
+              </div>
+            </article>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

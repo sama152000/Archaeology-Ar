@@ -1,0 +1,67 @@
+<!-- ======= قسم تفاصيل المقال ======= -->
+<section class="about-section">
+  <div class="container">
+    <div class="about-layout">
+      <!-- الشريط الجانبي -->
+      <aside class="about-sidebar">
+        <h3>المزيد من {{ postType === 'news' ? 'الأخبار' : postType === 'events' ? 'الفعاليات' : 'الإعلانات' }}</h3>
+        <ul>
+          <li><a (click)="goBack()" style="cursor: pointer;">العودة إلى {{ postType === 'news' ? 'جميع الأخبار' : postType === 'events' ? 'الفعاليات' : 'الإعلانات' }}</a></li>
+          <li><a [routerLink]="['/posts', 'news']">آخر الأخبار</a></li>
+          <li><a [routerLink]="['/posts', 'events']">الفعاليات القادمة</a></li>
+          <li><a [routerLink]="['/posts', 'announcements']">الإعلانات</a></li>
+        </ul>
+      </aside>
+
+      <!-- تفاصيل المقال -->
+      <div class="blog-details fade-in-element" [class.visible]="isVisible" *ngIf="currentPost">
+        <h2>{{ getTitle() }}</h2>
+        <p class="blog-meta">
+          <i class="pi pi-calendar"></i> {{ getDate() }}
+          <span *ngIf="getAuthor()"> | <i class="pi pi-user"></i> {{ getAuthor() }}</span>
+          <span *ngIf="getLocation()"> | <i class="pi pi-map-marker"></i> {{ getLocation() }}</span>
+          <span *ngIf="getDepartment()"> | <i class="pi pi-building"></i> {{ getDepartment() }}</span>
+          <span *ngIf="getPriority()" class="priority-badge priority-{{ getPriority() }}">
+            {{ getPriority() === 'high' ? 'عاجل' : 'متوسط' }}
+          </span>
+        </p>
+
+        <!-- جدول الفعالية -->
+        <div *ngIf="postType === 'events' && getSchedule()" class="event-schedule">
+          <h4><i class="pi pi-clock"></i> الجدول الزمني</h4>
+          <p>{{ getSchedule() }}</p>
+        </div>
+
+        <div class="blog-featured-image">
+          <img [src]="getImage()" [alt]="getTitle()" />
+        </div>
+
+        <div class="blog-body" [innerHTML]="getContent()">
+        </div>
+
+        <!-- التنقل بين المقالات -->
+        <div class="blog-navigation">
+          <a *ngIf="getPreviousPost()" 
+             (click)="navigateToPost(getPreviousPost())" 
+             class="prev-article"
+             style="cursor: pointer;">
+            <i class="pi pi-arrow-right"></i> {{ postType === 'news' ? 'الخبر السابق' : postType === 'events' ? 'الفعالية السابقة' : 'الإعلان السابق' }}
+          </a>
+          <a *ngIf="getNextPost()" 
+             (click)="navigateToPost(getNextPost())" 
+             class="next-article"
+             style="cursor: pointer;">
+            {{ postType === 'news' ? 'الخبر التالي' : postType === 'events' ? 'الفعالية التالية' : 'الإعلان التالي' }} <i class="pi pi-arrow-left"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- المقال غير موجود -->
+      <div class="blog-details fade-in-element" [class.visible]="isVisible" *ngIf="!currentPost">
+        <h3>المحتوى غير موجود</h3>
+        <p>تعذر العثور على {{ postType === 'news' ? 'الخبر' : postType === 'events' ? 'الفعالية' : 'الإعلان' }} المطلوب.</p>
+        <a (click)="goBack()" class="btn" style="cursor: pointer;">العودة إلى {{ postType === 'news' ? 'الأخبار' : postType === 'events' ? 'الفعاليات' : 'الإعلانات' }}</a>
+      </div>
+    </div>
+  </div>
+</section>
