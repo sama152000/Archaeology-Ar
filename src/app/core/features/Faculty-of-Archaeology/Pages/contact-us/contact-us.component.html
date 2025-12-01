@@ -1,0 +1,137 @@
+<section class="contact-section">
+  <div class="container">
+    <div class="contact-header">
+      <h2>اتصل بنا</h2>
+      <div class="underline"></div>
+      <p class="intro-text">
+        تواصَل مع كلية الآثار بجامعة الأقصر. نحن هنا للرد على استفساراتكم حول البرامج الدراسية والبحث العلمي والخدمات المقدمة.
+      </p>
+    </div>
+
+    <div class="contact-content">
+      <!-- نموذج التواصل -->
+      <div class="contact-form-container">
+        <h3>أرسل لنا رسالة</h3>
+        <form #contactForm="ngForm" (ngSubmit)="onSubmit()" class="contact-form">
+          <div class="form-group">
+            <label for="name">الاسم الكامل <span class="required">*</span></label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              [(ngModel)]="contactData.name"
+              required
+              class="form-control"
+              placeholder="أدخل اسمك الكامل">
+          </div>
+
+          <div class="form-group">
+            <label for="email">البريد الإلكتروني <span class="required">*</span></label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              [(ngModel)]="contactData.email"
+              required
+              class="form-control"
+              placeholder="أدخل بريدك الإلكتروني">
+          </div>
+
+          <div class="form-group">
+            <label for="subject">موضوع الرسالة <span class="required">*</span></label>
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              [(ngModel)]="contactData.subject"
+              required
+              class="form-control"
+              placeholder="موضوع الرسالة">
+          </div>
+
+          <div class="form-group">
+            <label for="message">نص الرسالة <span class="required">*</span></label>
+            <textarea
+              id="message"
+              name="message"
+              [(ngModel)]="contactData.message"
+              required
+              rows="6"
+              class="form-control"
+              placeholder="اكتب رسالتك هنا..."></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button 
+              type="submit" 
+              class="btn submit-btn"
+              [disabled]="!isFormValid() || isSubmitting">
+              <span *ngIf="!isSubmitting">إرسال الرسالة</span>
+              <span *ngIf="isSubmitting">
+                <i class="fas fa-spinner fa-spin"></i> جاري الإرسال...
+              </span>
+            </button>
+          </div>
+
+          <div *ngIf="submitMessage" class="submit-message">
+            <i class="fas fa-check-circle"></i>
+            {{ submitMessage }}
+          </div>
+        </form>
+      </div>
+
+      <!-- بيانات التواصل والخريطة -->
+      <div class="contact-info-container">
+        <div class="contact-info">
+          <h3>بيانات التواصل</h3>
+          
+          <div class="info-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <h4>العنوان</h4>
+              <p>كلية الآثار<br>جامعة الأقصر<br>مدينة الأقصر - مصر</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <i class="fas fa-phone"></i>
+            <div>
+              <h4>الهاتف</h4>
+              <p dir="ltr" style="direction: ltr; text-align: left;">+20 95 237 1000</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <h4>البريد الإلكتروني</h4>
+              <p dir="ltr" style="direction: ltr; text-align: left;">info@arch.luxor.edu.eg</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <i class="fas fa-clock"></i>
+            <div>
+              <h4>مواعيد العمل الرسمية</h4>
+              <p>من الأحد إلى الخميس: ٨:٠٠ صباحًا – ٤:٠٠ مساءً<br>السبت: ٩:٠٠ صباحًا – ١:٠٠ ظهرًا</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- خريطة جوجل -->
+        <div class="map-container">
+          <h3>اعثر علينا</h3>
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3609.158819999999!2d32.639637!3d25.687243!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDQxJzE0LjEiTiAzMsKwMzgnMjIuNyJF!5e0!3m2!1sar!2seg!4v1736012345678"
+            width="100%" 
+            height="300" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -28,7 +28,7 @@ export class HeroSliderComponent implements OnInit, OnDestroy {
       title: 'مرحبًا بكم في مصر',
       description: 'اكتشف أرض الفراعنة والعجائب القديمة.',
       buttonText: 'استكشف',
-      buttonLink: '#'
+      buttonLink: '/about/vision'
     },
     {
       id: 2,
@@ -36,7 +36,7 @@ export class HeroSliderComponent implements OnInit, OnDestroy {
       title: 'اكتشف التاريخ',
       description: 'تجول عبر قرون من الحضارة والثقافة.',
       buttonText: 'اعرف المزيد',
-      buttonLink: '#'
+      buttonLink: '/about/vision'
     },
     {
       id: 3,
@@ -44,7 +44,7 @@ export class HeroSliderComponent implements OnInit, OnDestroy {
       title: 'زُر المتحف',
       description: 'شاهد كنوزًا تحكي قصة مصر الخالدة.',
       buttonText: 'احجز تذكرتك',
-      buttonLink: '#'
+      buttonLink: '/about/vision'
     }
   ];
 

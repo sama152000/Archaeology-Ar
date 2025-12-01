@@ -1,0 +1,29 @@
+<div *ngIf="center">
+  <div class="content-header">
+    <h2>الأنشطة والبرامج</h2>
+    <div class="underline"></div>
+  </div>
+
+  <div class="content-section">
+    <h3>أنشطة وبرامج {{ center.name }}</h3>
+    <p>يقدم المركز مجموعة واسعة ومتنوعة من الأنشطة والبرامج المصممة لتحقيق رسالتنا وخدمة المجتمع الأكاديمي والبحثي.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="info-card" *ngFor="let activity of center.activities">
+      <h4>{{ activity }}</h4>
+      <p>برنامج شامل مصمم لدعمادة أهداف البحث العلمي والتعليم في مجالات علوم الآثار.</p>
+    </div>
+  </div>
+
+  <div class="content-section mt-4">
+    <h3>فوائد ومميزات البرامج</h3>
+    <ul>
+      <li>الوصول إلى مرافق بحثية متطورة وعالمية المستوى</li>
+      <li>التعاون مع شركاء دوليين مرموقين</li>
+      <li>فرص تطوير مهني متميزة</li>
+      <li>توفير أحدث الأجهزة والموارد التقنية</li>
+      <li>إشراف علمي وتوجيه من خبراء متخصصين</li>
+    </ul>
+  </div>
+</div>

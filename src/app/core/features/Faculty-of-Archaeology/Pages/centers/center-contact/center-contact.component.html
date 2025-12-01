@@ -1,0 +1,38 @@
+<div *ngIf="center">
+  <div class="content-header">
+    <h2>بيانات التواصل</h2>
+    <div class="underline"></div>
+  </div>
+
+  <div class="content-section">
+    <h3>{{ center.name }}</h3>
+    <p>للاستفسارات حول البرامج والفرص البحثية والخدمات المقدمة، يُرجى التواصل معنا باستخدام البيانات التالية:</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="info-card">
+      <h4><i class="fas fa-envelope"></i> البريد الإلكتروني</h4>
+      <p dir="ltr" style="direction: ltr; text-align: left;">{{ center.contactInfo.email }}</p>
+    </div>
+
+    <div class="info-card">
+      <h4><i class="fas fa-phone"></i> الهاتف</h4>
+      <p dir="ltr" style="direction: ltr; text-align: left;">{{ center.contactInfo.phone }}</p>
+    </div>
+
+    <div class="info-card">
+      <h4><i class="fas fa-map-marker-alt"></i> العنوان</h4>
+      <p>{{ center.contactInfo.address }}</p>
+    </div>
+
+    <div class="info-card">
+      <h4><i class="fas fa-user"></i> مدير المركز</h4>
+      <p>{{ center.director.name }}<br>{{ center.director.title }}</p>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <h3>مواعيد العمل الرسمية</h3>
+    <p>من الأحد إلى الخميس: من ٨:٠٠ صباحًا حتى ٤:٠٠ مساءً<br>السبت: من ٩:٠٠ صباحًا حتى ١:٠٠ ظهرًا</p>
+  </div>
+</div>
